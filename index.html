@@ -16,12 +16,30 @@
     justify-content: center;
     height: 100vh;
   }
+
+  .logo{
+    cursor: pointer;
+    transition: opacity 1s ease; /* Add fade-in transition */
+  }
+
+  .logo:hover {
+    transition: all 0.5s; /* hover transition */
+    opacity: 0.6
+  }
 </style>
 
 </head>
 <body>  
     <div class="container">
-      <img src="img/logo.png" width="400"> 
+      <div class="logo" id="mahae">
+        <a href="main.html" id="clicker">
+          <img src="img/logo.png" width="400"> 
+        </a>
+      </div>
     </div>
+
+  <script>
+
+  </script>
 </body>
 </html>
