@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCT127STRM | 홈</title>
+    <link href="css/main-style.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <style>
+      #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        width: 375px;
+        height: 660px;
+        background-color: #000;
+        /* border: 1px solid #EEE; */
+        padding: 20px;
+        overflow: scroll;
+        color: #EEE;
+      }
+      #closeBtn {
+        background: none;
+        border: none;
+        font-size: xx-large;
+        float: right;
+        margin-right: 1rem;
+        margin-top: -0.8rem;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+      .popup-img {
+        width: 25%;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        justify-content: space-between;
+      }
+      .image-popup {
+        display: none;
+        font-family: 'NeoDunggeunmoPro-Regular';
+        position: fixed;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        width: 375px;
+        height: 650px;
+        background-color: #000;
+        color: #EEE;
+        /* border: 1px solid #EEE; */
+        padding: 20px;
+        overflow: scroll;
+      }
+      .backBtn {
+        display: block;
+        position: fixed;
+        background: none;
+        border: none;
+        font-size: larger;
+        float: left;
+        margin-top: 1rem;
+      }
+      a, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: white;
+      }
+      li {
+        list-style: none;
+      }
+      /* Style the scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        border: 1px solid #f1f1f1; /* Border around the scrollbar handle */
+      }
+
+      @media (max-width: 600px) {
+        .first-4-icons-absolute ul {
+          display: flex;
+        }
+        #popup {
+          width: 340px;
+          height: 528px;
+          top: 50%;
+          left: 50%;
+          z-index: 9999;
+        }
+        .image-popup {
+          width: 300px;
+          height: 528px;
+          top: 50%;
+          left: 50%;
+          z-index: 9999;
+        }
+      }
+    </style>
+</head>
+<body>  
+    <header class="header-top" style="color: white;">
+        <ul>
+            <a href="main.html">
+                <li class="logo" style="margin-top: 3px; color: #EEE;">
+                    <span class="strm-tag">NCT127STRM</span>
+                </li>
+            </a>
+            <a href="#">
+                <li class="item-right" style="margin-top: 3px; color: #EEE;">&copy;Copyright</li>
+            </a>
+        </ul>
+        <aside>
+          <a href="127.html">
+            <span id="date" class="item"></span>
+            <span id="time" class="item"></span>
+          </a>
+        </aside>
+        </div>
+    </header>
+
+
+    <!-- <button id="popupBtn">
+      <img class="center-img" src="logo_test01.png">
+    </button>
+    <div id="popup" alt="playlist">
+      <button id="closeBtn">&times;</button>
+      <h2 style="text-align: center;">≪ 플레이리스트 ≫</h2>
+      
+      <div style="margin-top: 2rem;">
+        <span>시간에 따라</span>
+        <div class="row first 1">
+          <img src="./main_playlist/아침일찍.png" class="popup-img" data-popup="popup1" alt="아침일찍">
+          <img src="./main_playlist/아침.png" class="popup-img" data-popup="popup2" alt="아침">
+          <img src="./main_playlist/낮.png" class="popup-img" data-popup="popup1" alt="낮">
+          <img src="./main_playlist/저녁.png" class="popup-img" data-popup="popup2" alt="저녁">
+        </div>
+        <div class="row first 2">
+          <img src="./main_playlist/밤.png" class="popup-img" data-popup="popup1" alt="밤">
+          <img src="./main_playlist/새벽.png" class="popup-img" data-popup="popup2" alt="새벽">
+        </div>
+      </div>
+      <div>
+        <span>상황에 따라</span>
+        <div class="row first 1">
+          <img src="./main_playlist/노동요.png" class="popup-img" data-popup="popup1" alt="노동요">
+          <img src="./main_playlist/노동요2배속.png" class="popup-img" data-popup="popup2" alt="노동요2배속">
+          <img src="./main_playlist/운동.png" class="popup-img" data-popup="popup1" alt="운동">
+          <img src="./main_playlist/공부.png" class="popup-img" data-popup="popup2" alt="공부">
+        </div>
+        <div class="row first 2">
+          <img src="./main_playlist/앨범깡.png" class="popup-img" data-popup="popup1" alt="앨범깡">
+          <img src="./main_playlist/여행.png" class="popup-img" data-popup="popup2" alt="여행">
+          <img src="./main_playlist/코딩.png" class="popup-img" data-popup="popup1" alt="코딩">
+          <img src="./main_playlist/드라이브.png" class="popup-img" data-popup="popup2" alt="드라이브">
+        </div>
+        <div class="row first 3">
+          <img src="./main_playlist/출근.png" class="popup-img" data-popup="popup1" alt="출근">
+          <img src="./main_playlist/퇴근.png" class="popup-img" data-popup="popup2" alt="퇴근">
+        </div>
+      </div>
+      <div>
+        <span>날씨에 따라</span>
+        <div class="row first 1">
+          <img src="./main_playlist/햇빛쨍쨍.png" class="popup-img" data-popup="popup1" alt="햇빛쨍쨍할때">
+          <img src="./main_playlist/햇빛+구름.png" class="popup-img" data-popup="popup2" alt="햇빛도 나고 구름도 있을때">
+          <img src="./main_playlist/바람부는날.png" class="popup-img" data-popup="popup1" alt="바람불때">
+          <img src="./main_playlist/흐린날.png" class="popup-img" data-popup="popup2" alt="흐릴때">
+        </div>
+        <div class="row first 2">
+          <img src="./main_playlist/비오는날.png" class="popup-img" data-popup="popup1" alt="비올 때">
+          <img src="./main_playlist/눈오는날.png" class="popup-img" data-popup="popup2" alt="눈올 때">
+        </div>
+      </div>
+      <div>
+        <span>계절에 따라</span>
+        <div class="row first">
+          <img src="./main_playlist/봄.png" class="popup-img" data-popup="popup1" alt="봄">
+          <img src="./main_playlist/여름.png" class="popup-img" data-popup="popup2" alt="여름">
+          <img src="./main_playlist/가을.png" class="popup-img" data-popup="popup1" alt="가을">
+          <img src="./main_playlist/겨울.png" class="popup-img" data-popup="popup2" alt="겨울">
+        </div>
+      </div>
+      <div>
+        <span>멤버별 (다른 가수의 노래 포함)</span>
+        <div class="row first 1">
+          <img src="./main_playlist/태일.png" class="popup-img" data-popup="popup1" alt="태일">
+          <img src="./main_playlist/쟈니.png" class="popup-img" data-popup="popup2" alt="쟈니">
+          <img src="./main_playlist/태용.png" class="popup-img" data-popup="popup1" alt="태용">
+        </div>
+        <div class="row first 2">
+          <img src="./main_playlist/유타.png" class="popup-img" data-popup="popup1" alt="유타">
+          <img src="./main_playlist/도영.png" class="popup-img" data-popup="popup2" alt="도영">
+          <img src="./main_playlist/재현.png" class="popup-img" data-popup="popup1" alt="재현">
+        </div>
+        <div class="row first 3">
+          <img src="./main_playlist/정우.png" class="popup-img" data-popup="popup1" alt="정우">
+          <img src="./main_playlist/마크.png" class="popup-img" data-popup="popup2" alt="마크">
+          <img src="./main_playlist/해찬.png" class="popup-img" data-popup="popup1" alt="해찬">
+        </div>
+      </div>
+      <a href="https://forms.gle/PJb2wi5fVwLzVUk9A" style="color: white;">
+        <p style="text-align: center; margin-top: 1.5rem;">나만의 플리를 추천하고 싶다면?<br>현재 플리 목록 절찬리 모집중!</p>
+      </a>
+    </div>
+    
+
+    <div id="popup1" class="image-popup">
+      <button class="backBtn">&larr;</button>
+      <h3 class="playlist-title" style="border-top: 1px solid #EEE; border-bottom: 1px solid #EEE; text-align: center; margin-top: 0rem; padding: 1rem;">노동요 플리</h3>
+      <div class="playlist-songs" style="height: 330px; overflow: scroll; border-bottom: 1px solid #EEE; margin-top: -1rem;">
+        <li alt="노동요">
+          <ul>01 | Faster</ul>
+          <ul>02 | 2 Baddies</ul>
+          <ul>03 | Punch</ul>
+          <ul>04 | Kick It</ul>
+          <ul>05 | Superhuman</ul>
+          <ul>01 | Faster</ul>
+          <ul>02 | 2 Baddies</ul>
+          <ul>03 | Punch</ul>
+          <ul>04 | Kick It</ul>
+          <ul>05 | Superhuman</ul>
+          <ul>01 | Faster</ul>
+          <ul>02 | 2 Baddies</ul>
+          <ul>03 | Punch</ul>
+          <ul>04 | Kick It</ul>
+          <ul>05 | Superhuman</ul>
+        </li>
+      </div>
+      <p class="playlist-oneclick-desc" style="text-align: center; border-bottom: 1px solid #EEE;">'노동요' 플리를 바로 듣고싶다면?</p>
+      <div class="playlist-oneclick" style="  display: grid; grid-template-columns: auto auto auto; text-align: center; border-bottom: 1px solid #EEE; align-items: center;">
+        <div class="oneclick-row-1">
+          <div style="padding: 0.5rem;">멜론 iOS</div>
+          <div style="padding: 0.5rem;">지니 iOS</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">Spotify</div>
+        </div>
+        <div class="oneclick-row-2">
+          <div style="padding: 0.5rem;">멜론 Android</div>
+          <div style="padding: 0.5rem;">지니 Android</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">Apple Music</div>
+        </div>
+        <div class="oneclick-row-3">
+          <div style="padding: 0.5rem;">멜론 iPad</div>
+          <div style="padding: 0.5rem;">벅스</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">YT Music</div>
+        </div>
+      </div>
+      <a href="https://forms.gle/PJb2wi5fVwLzVUk9A" style="color: white;">
+        <p style="text-align: center; margin-top: 1.5rem;">나만의 플리를 추천하고 싶다면?<br>현재 플리 목록 절찬리 모집중!</p>
+      </a>
+    </div>
+    
+    <div id="popup2" class="image-popup">
+      <button class="backBtn">&larr;</button>
+      <h3 class="playlist-title" style="border-top: 1px solid #EEE; border-bottom: 1px solid #EEE; text-align: center; margin-top: 0rem; padding: 1rem;">공부</h3>
+      <div class="playlist-songs" style="height: 330px; overflow: scroll; border-bottom: 1px solid #EEE; margin-top: -1rem;">
+        <li alt="공부">
+          <ul>01 Faster</ul>
+          <ul>02 2 Baddies</ul>
+          <ul>03 Punch</ul>
+          <ul>04 Kick It</ul>
+          <ul>05 Superhuman</ul>
+          <ul>01 Faster</ul>
+          <ul>02 2 Baddies</ul>
+          <ul>03 Punch</ul>
+          <ul>04 Kick It</ul>
+          <ul>05 Superhuman</ul>
+          <ul>01 Faster</ul>
+          <ul>02 2 Baddies</ul>
+          <ul>03 Punch</ul>
+          <ul>04 Kick It</ul>
+          <ul>05 Superhuman</ul>
+        </li>
+      </div>
+      <p class="playlist-oneclick-desc" style="text-align: center; border-bottom: 1px solid #EEE;">'공부' 플리를 바로 듣고싶다면?</p>
+      <div class="playlist-oneclick" style="  display: grid; grid-template-columns: auto auto auto; text-align: center; border-bottom: 1px solid #EEE; align-items: center;">
+        <div class="oneclick-row-1">
+          <div style="padding: 0.5rem;">멜론 iOS</div>
+          <div style="padding: 0.5rem;">지니 iOS</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">Spotify</div>
+        </div>
+        <div class="oneclick-row-2">
+          <div style="padding: 0.5rem;">멜론 Android</div>
+          <div style="padding: 0.5rem;">지니 Android</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">Apple Music</div>
+        </div>
+        <div class="oneclick-row-3">
+          <div style="padding: 0.5rem;">멜론 iPad</div>
+          <div style="padding: 0.5rem;">벅스</div>
+          <div style="padding: 0.5rem; margin-bottom: 1rem;">YT Music</div>
+        </div>
+      </div>
+      <a href="https://forms.gle/PJb2wi5fVwLzVUk9A" style="color: white;">
+        <p style="text-align: center; margin-top: 1.5rem;">나만의 플리를 추천하고 싶다면?<br>현재 플리 목록 절찬리 모집중!</p>
+      </a>
+    </div> -->
+
+    <!-- Home Icons -->
+    <section class="main-background">
+        <div>
+            <div class="first-4-icons-absolute">
+                <!-- 첫번째 4개 아이콘 -->
+                <ul>
+                    <!-- 첫번째 아이콘 -->
+                    <li>
+                        <a href="./main_guide/home.html">
+                            <div>
+                                <div class="image-wrapper">
+                                    <img src="./image/homeicons/투표.png">
+                                </div>
+                                <span style="background: #141d24; border-color: #141d24;">총공 127</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- 두번째 아이콘 -->
+                    <li>
+                        <a href="#">
+                            <div>
+                                <div class="image-wrapper">
+                                    <img src="./image/homeicons/실시간.png">
+                                </div>
+                                <span style="background: #141d24; border-color: #141d24;">실시간</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- 세번째 아이콘 -->
+                    <li>
+                      <a href="#">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/유튜브_아카이브.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24; text-align: center;">유튜브<br>아카이브</span>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- 네번째 아이콘 -->
+                    <li>
+                      <a href="./main_nctflix/opening.html">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/NCTFLIX.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24; font-size: 15px;">NCTFLIX</span>
+                        </div>
+                      </a>
+                    </li>
+                </ul>
+                <!-- 두번째 4개 아이콘 -->
+                <ul>
+                    <!-- 다섯번째 아이콘 -->
+                    <li>
+                      <a href="#">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/127.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24;">우리칠</span>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- 여섯번째 아이콘 -->
+                    <li>
+                      <a href="#">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/콘서트.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24;">응원법</span>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- 일곱번째 아이콘 -->
+                    <li>
+                      <a href="./main_HoF/index.html">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/명예.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24;">명예의<br>칠푸딩</span>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- 여덟번째 아이콘 -->
+                    <li>
+                      <a href="#">
+                        <div>
+                            <div class="image-wrapper">
+                                <img src="./image/homeicons/접근금지.png">
+                            </div>
+                            <span style="background: #141d24; border-color: #141d24;">출입금지</span>
+                        </div>
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Date
+        var today = new Date();
+
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var dd = String(today.getDate()).padStart(2, '0');
+        var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+        document.getElementById('date').textContent = formattedDate;
+
+        // Time
+        var today = new Date();
+        var hh = String(today.getHours()).padStart(2, '0');
+        var mm = String(today.getMinutes()).padStart(2, '0');
+        var formattedTime = hh + ':' + mm;
+
+        document.getElementById('time').textContent = formattedTime;
+        
+        setInterval(function() {
+            today = new Date();
+            hh = String(today.getHours()).padStart(2, '0');
+            mm = String(today.getMinutes()).padStart(2, '0');
+            formattedTime = hh + ':' + mm;
+            document.getElementById('time').textContent = formattedTime;
+        }, 1000);
+
+        // Playlist
+        const popupBtn = document.getElementById('popupBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const popup = document.getElementById('popup');
+        const images = document.querySelectorAll('.popup-img');
+        const closeBtns = document.querySelectorAll('.backBtn');
+        const popups = document.querySelectorAll('.image-popup');
+
+        popupBtn.addEventListener('click', function() {
+          popup.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', function() {
+          popup.style.display = 'none';
+        });
+
+        images.forEach(function(image) {
+          image.addEventListener('click', function() {
+            const popupId = image.getAttribute('data-popup');
+            const popup = document.getElementById(popupId);
+            popup.style.display = 'block';
+          });
+        });
+
+        closeBtns.forEach(function(closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            const popup = closeBtn.parentNode;
+            popup.style.display = 'none';
+          });
+        });
+
+        popups.forEach(function(popup) {
+          popup.addEventListener('click', function(event) {
+            if (event.target === popup) {
+              popup.style.display = 'none';
+            }
+          });
+        });
+    </script>
+</body>
+</html>
